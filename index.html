@@ -1,75 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
+      let playerSelection = prompt("rock, paper or scrissors?");
+      const computerSelection = computerPlay();
 
-        let playerSelection = prompt("rock, paper or scrissors?");
-        const computerSelection = computerPlay();
+      console.log(
+        "You picked: " +
+          playerSelection +
+          "     Computer picked: " +
+          computerSelection
+      );
 
-        console.log("You picked: " + playerSelection + "     Computer picked: " + computerSelection);
+      playRound(playerSelection, computerSelection);
 
-        playRound(playerSelection, computerSelection);
+      function playRound(playerSelection, computerSelection) {
+        //normalize
 
-        function playRound(playerSelection, computerSelection){
-            //normalize
+        playerSelection.toLowerCase();
 
-            playerSelection.toLowerCase();
-
-            if(playerSelection === computerSelection)
-            {
-                console.log("Tie");
-                return;
-            }
-
-            if(playerSelection === "rock" && computerSelection === "scissors"){
-                console.log("You win!");
-                return;
-            }
-            else if(playerSelection === "paper" && computerSelection === "rock"){
-                console.log("You win!");
-                return;
-            }
-            else if(playerSelection === "scissors" && computerSelection === "paper"){
-                console.log("You win!");
-                return;
-            }
-            else{
-                console.log("You lose!");
-                return;
-            }
+        if (playerSelection === computerSelection) {
+          console.log("Tie");
+          return;
         }
 
-
-        function computerPlay() {
-            let rndResult = getRndInteger(0,3);
-            console.log(rndResult);
-            switch (rndResult) {
-                case 0:
-                    return "rock";
-                    break;
-                case 1:
-                    return "paper";
-                    break;
-                case 2:
-                    return "scissors";
-                    break;
-
-                default:
-                    break;
-            }
+        if (playerSelection === "rock" && computerSelection === "scissors") {
+          console.log("You win!");
+          return;
+        } else if (
+          playerSelection === "paper" &&
+          computerSelection === "rock"
+        ) {
+          console.log("You win!");
+          return;
+        } else if (
+          playerSelection === "scissors" &&
+          computerSelection === "paper"
+        ) {
+          console.log("You win!");
+          return;
+        } else {
+          console.log("You lose!");
+          return;
         }
+      }
 
-        function getRndInteger(min, max) {
-            return Math.floor(Math.random() * (max - min) ) + min;
+      function computerPlay() {
+        let rndResult = getRndInteger(0, 3);
+        console.log(rndResult);
+        switch (rndResult) {
+          case 0:
+            return "rock";
+            break;
+          case 1:
+            return "paper";
+            break;
+          case 2:
+            return "scissors";
+            break;
+
+          default:
+            break;
         }
+      }
+
+      function getRndInteger(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+      }
     </script>
-</body>
-
+  </body>
 </html>
