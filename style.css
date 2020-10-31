@@ -38,6 +38,10 @@ body {
   transition-duration: 0.1s;
 }
 
+.resultRound {
+  font-size: large;
+}
+
 .result {
   font-size: xx-large;
 }

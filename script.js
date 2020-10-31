@@ -1,8 +1,17 @@
+const resultRound = document.querySelector(".resultRound");
 const result = document.querySelector(".result");
 const computerPick = document.querySelector(".computerPick");
-//clear result placeholder
+const rounds = document.querySelector(".rounds");
+
+//clear placeholders
+resultRound.textContent = "";
 result.textContent = "";
 computerPick.textContent = "";
+rounds.textContent = "";
+
+//rounds state
+let roundsPlayed = 0;
+let roundsWon = 0;
 
 const buttons = document.querySelectorAll(".button");
 
@@ -22,25 +31,37 @@ function touch(e) {
 }
 
 function play(playerPick) {
+  roundsPlayed++;
+
   computerResult = compute();
 
   computerPick.textContent = "Computer picked " + computerResult;
 
   if (playerPick == computerResult) {
-    result.textContent = "Tie!";
-    return;
-  }
-
-  if (
+    resultRound.textContent = "Tie!";
+  } else if (
     (playerPick == "Rock" && computerResult == "Scissors") ||
     (playerPick == "Paper" && computerResult == "Rock") ||
     (playerPick == "Scissors" && computerResult == "Paper")
   ) {
-    result.textContent = "You win!";
-    return;
+    resultRound.textContent = "You win this round!";
+    roundsWon++;
   } else {
-    result.textContent = "You lose!";
-    return;
+    resultRound.textContent = "You lose this round!";
+  }
+
+  rounds.textContent = roundsPlayed;
+
+  if (roundsPlayed == 5) {
+    if (roundsWon >= 3) {
+      result.textContent = "You win!";
+    } else {
+      result.textContent = "You lost!";
+    }
+    roundsPlayed = 0;
+    roundsWon = 0;
+  } else {
+    result.textContent = "";
   }
 }
 
