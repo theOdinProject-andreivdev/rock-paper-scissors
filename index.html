@@ -3,76 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
   </head>
 
+  <link rel="stylesheet" href="style.css" />
   <body>
-    <script>
-      let playerSelection = prompt("rock, paper or scrissors?");
-      const computerSelection = computerPlay();
-
-      console.log(
-        "You picked: " +
-          playerSelection +
-          "     Computer picked: " +
-          computerSelection
-      );
-
-      playRound(playerSelection, computerSelection);
-
-      function playRound(playerSelection, computerSelection) {
-        //normalize
-
-        playerSelection.toLowerCase();
-
-        if (playerSelection === computerSelection) {
-          console.log("Tie");
-          return;
-        }
-
-        if (playerSelection === "rock" && computerSelection === "scissors") {
-          console.log("You win!");
-          return;
-        } else if (
-          playerSelection === "paper" &&
-          computerSelection === "rock"
-        ) {
-          console.log("You win!");
-          return;
-        } else if (
-          playerSelection === "scissors" &&
-          computerSelection === "paper"
-        ) {
-          console.log("You win!");
-          return;
-        } else {
-          console.log("You lose!");
-          return;
-        }
-      }
-
-      function computerPlay() {
-        let rndResult = getRndInteger(0, 3);
-        console.log(rndResult);
-        switch (rndResult) {
-          case 0:
-            return "rock";
-            break;
-          case 1:
-            return "paper";
-            break;
-          case 2:
-            return "scissors";
-            break;
-
-          default:
-            break;
-        }
-      }
-
-      function getRndInteger(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min;
-      }
-    </script>
+    <div class="container">
+      <div class="containerResultText">
+        Result:
+        <div class="computerPick">some pick</div>
+        <div class="result">some result</div>
+      </div>
+      <div class="containerButtons">
+        <div class="button rock">Rock</div>
+        <div class="button paper">Paper</div>
+        <div class="button scissors">Scissors</div>
+      </div>
+    </div>
+    <script src="script.js"></script>
   </body>
 </html>
