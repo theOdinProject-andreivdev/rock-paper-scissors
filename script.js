@@ -7,15 +7,19 @@ computerPick.textContent = "";
 const buttons = document.querySelectorAll(".button");
 
 buttons.forEach((button) => {
-  button.addEventListener("touchstart", function (e) {
-    console.log(this.textContent);
-    this.classList.add("buttonAnimate");
-    play(this.textContent);
-  });
+  button.addEventListener("click", touch);
+  button.addEventListener("touchstart", touch);
+
   button.addEventListener("transitionend", function () {
     this.classList.remove("buttonAnimate");
   });
 });
+
+function touch(e) {
+  e.preventDefault();
+  this.classList.add("buttonAnimate");
+  play(this.textContent);
+}
 
 function play(playerPick) {
   computerResult = compute();
